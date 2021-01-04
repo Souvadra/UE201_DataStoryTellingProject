@@ -4,6 +4,9 @@ function AnswerMatrix = makeNormalisedFigureMatrixFromDataArray(data_array)
  of it. The tensor is then normalized before output, so that the MATLAB
  'image' function can be applied on it directly for check the image.
 %}
+%% This function normalises the values, if the input_vector is already 
+%% normalised, then comment out the last line
+%%
 red_array = data_array(1:1024);
 green_array = data_array(1025:2048);
 blue_array = data_array(2049:3072);
@@ -28,5 +31,5 @@ AnswerMatrix(:,:,1) = red_matrix;
 AnswerMatrix(:,:,2) = green_matrix;
 AnswerMatrix(:,:,3) = blue_matrix;
 
-AnswerMatrix = AnswerMatrix./255;
+%AnswerMatrix = AnswerMatrix./255;
 end 
