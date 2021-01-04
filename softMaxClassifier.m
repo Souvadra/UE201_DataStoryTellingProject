@@ -17,4 +17,5 @@ inside_log = (Exp_f ./ sum(Exp_f)) - ideal_inside_log;
 L_i_vector = -log(inside_log);
 L = mean(L_i_vector) + (Lambda * sumSquareOfMatrix(weight_matrix));
 %% output will be 10x1 vector 
+
 end
