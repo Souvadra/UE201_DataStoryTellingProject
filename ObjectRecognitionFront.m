@@ -12,18 +12,19 @@ clearvars dataArray_matrix labels_vector train_frequency test_frequency;
 W = rand(size(labelNames,1), size(train_Matrix(1,:),2));
 b = zeros(size(labelNames,1),1); % just making it zero for now, will change later for better performance
 Lambda = 0.1; % just making this randomly
+delta = 1.0;
 %% defining the loss-function
-loss = softMaxClassifier(train_Matrix(1,:),W,b,Lambda);
-%{
-Goal is the find the minima of loss function, and the weight_matrix, for
-which I get the minimum loss, my matrix to go by.
-
-Algorithm,
-While the directin has magnitude != 0:
-    Find the direction of steepest descent at the x (-> weight vector)
-    travel to the direction with the learning rate ALPHA 
-output the weigh_vector input at which we get the minimum loss function
-%}
-
+%% Gradient stuff
+initital_loss = SVM(train_label_vector, train_Matrix, W, b, delta, Lambda)
+step_size = 0.00001; % random value, this is a hyperparameter...
+% Vanilla Minibatch Gradient Descent 
+for i=1:20
+    i
+    [batch_label_vector, batch_data_Matrix] = sample_training_batch(train_label_vector, train_Matrix, 16); %Sample 32 examples
+    W_gradient = evaluateSVMNumericalGradient(batch_label_vector, batch_data_Matrix, W, b, delta, Lambda);
+    W = W - step_size * W_gradient; 
+end
+final_loss = SVM(train_label_vector, train_Matrix, W, b, delta, Lambda)
+showTemplateImagesOfCurrentWeightMatrix(W,labelNames);
 
 end
