@@ -1,10 +1,10 @@
-function output_weight_matrix = trainModelSVM(train_label_vector, train_Matrix, bias_vector, delta, Lambda, batch_size, num_iter)
+function output_weight_matrix = trainModelSVM(train_label_vector, train_Matrix, bias_vector, delta, Lambda, batch_size, num_iter, learning_rate)
 %%% This function takes the training data and hyperparameters as input and
 %%% performs the training of the model using a SVM loss function, and
 %%% returns the output_weights in the form of a matrix.
 
     W = rand(10, size(train_Matrix(1,:),2)) * 0.0001; %% initialising a random weight vector to get started
-    learning_rate = 0.0001; % random value, this is a hyperparameter...
+    %learning_rate = 0.0001; % random value, this is a hyperparameter...
     % Vanilla Minibatch Gradient Descent 
     progress_counter_x = zeros(num_iter/100);
     progress_counter_y = zeros(num_iter/100); % this stores the loss generated per iteration
