@@ -5,7 +5,7 @@ vector input point x.
 This function will probably be very slow and is gonna take a lot of time. 
 %}
     dW = zeros(size(weight_matrix));
-    h = 0.0001;
+    h = 0.000001;
     for row=1:size(weight_matrix,1)
         for col=1:size(weight_matrix,2)
             this_weight_matrix = weight_matrix;
