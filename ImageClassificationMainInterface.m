@@ -1,14 +1,12 @@
 %% Clear the Workspace beforehand
 clear
 %% Load the Data
-% train_frequency = 0.65;
-% test_frequency = 0.15;
-% [dataArray_matrix, labels_vector, labelNames] = loadData(); % this also normalised the value of the data matrix
-% [test_Matrix, train_Matrix, valid_Matrix, test_label_vector, train_label_vector, valid_label_vector] = test_train_validation_set_maker(dataArray_matrix, labels_vector, train_frequency, test_frequency);
-% clearvars dataArray_matrix labels_vector train_frequency test_frequency; 
+train_frequency = 0.65;
+test_frequency = 0.15;
+[dataArray_matrix, labels_vector, labelNames] = loadData(); % this also normalised the value of the data matrix
+[test_Matrix, train_Matrix, valid_Matrix, test_label_vector, train_label_vector, valid_label_vector] = test_train_validation_set_maker(dataArray_matrix, labels_vector, train_frequency, test_frequency);
+clearvars dataArray_matrix labels_vector train_frequency test_frequency; 
 % save('loaded_data.mat')
-% Uncomment the above multiline comment during final deployment
-load("loaded_data.mat") % Comment this section out for final deployment
 %% Sort 5 images in each class and sort them
 pic_weights = zeros(size(labelNames,1), size(train_Matrix(1,:),2));
 j = 1;
