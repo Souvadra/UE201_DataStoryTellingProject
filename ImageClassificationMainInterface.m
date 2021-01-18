@@ -9,6 +9,16 @@ clear
 % save('loaded_data.mat')
 % Uncomment the above multiline comment during final deployment
 load("loaded_data.mat") % Comment this section out for final deployment
+%% Sort 5 images in each class and sort them
+pic_weights = zeros(size(labelNames,1), size(train_Matrix(1,:),2));
+j = 1;
+for i=1:10
+    while train_label_vector(j) ~= i
+        j = j + 1;
+    end
+    pic_weights(i,:) = train_Matrix(j,:);
+end
+%showTemplateImagesOfCurrentWeightMatrix(pic_weights,labelNames);
 %% Fine - Tune the hyperparameters
 output_matrix = [];
 learning_rates = [7.5*10^-4, 9*10^-4, 10^-3, 1.1*10^-3, 2.5*10^-3];
@@ -45,8 +55,18 @@ training_weights = training_output{2, 1};
 test_accuracy = FINALtestModel(training_weights, test_Matrix, test_label_vector)
 %% Showing the weights in terms of pictures
 showTemplateImagesOfCurrentWeightMatrix(training_weights,labelNames);
+%% Save the model for deployment later
+save DeployableModelWeights.mat training_weights
 
-
+%% ************************************************************************ %%
+%% ************************************************************************ %%
+%% Random Deployment
+%% Load the deployable data
+load DeployableModelWeights.mat
+for i=(1:5)
+    number = int8(100 * rand());
+    DeployModel(training_weights,test_Matrix(number,:),labelNames(test_label_vector(number)));
+end
 
 
 
