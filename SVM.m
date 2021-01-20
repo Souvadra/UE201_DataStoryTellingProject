@@ -1,10 +1,8 @@
 function [L, dW]= SVM(class_label_vector, input_data_matrix, weight_matrix, bias_vector, delta, Lambda)
-%{
-This is my SVM classifier to that takes the following parameters and
-hyper-parameters and returns the scalar Loss function. It also calculates
-te analytical gradient of the SVM loss function and returns the gradient
-value. 
-%}  
+%%% This is my SVM classifier that takes the following parameters and
+%%% hyper-parameters and returns the scalar Loss function. It also calculates
+%%% te analytical gradient of the SVM loss function and returns the gradient
+%%% value.
     %% Computing the loss function 
     l = zeros(size(input_data_matrix,1),1);
     l_matrix = zeros(size(input_data_matrix,1),10);

@@ -1,8 +1,7 @@
 function [training_accuracy, validation_accuracy] = testModel(trained_weights, train_Matrix, train_class, valid_Matrix, valid_class)
-%%% This function inputs the testing and training data and the weights
-%%% found from training the training data, and shows how well the model
-%%% performs on training_data and testing_data. 
-
+%%% This function inputs the validation and training data and the weights
+%%% and shows how well the model performs on training_data and the 
+%%% validation data. 
 %% Predict on Training data
 train_result_matrix = trained_weights * train_Matrix';
 train_result_matrix = train_result_matrix';

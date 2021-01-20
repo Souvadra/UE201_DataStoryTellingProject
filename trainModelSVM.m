@@ -3,7 +3,6 @@ function output_weight_matrix = trainModelSVM(train_label_vector, train_Matrix, 
 %%% performs the training of the model using a SVM loss function, and
 %%% returns the output_weights in the form of a matrix.
 
-    % Vanilla Minibatch Gradient Descent 
     [batch_label_vector, batch_data_Matrix] = sample_training_batch(train_label_vector, train_Matrix, batch_size);
     [initial_loss, ignore_it] =  SVM(batch_label_vector, batch_data_Matrix, W, bias_vector, delta, Lambda);
     progress_counter_x = zeros(1,num_iter/100);

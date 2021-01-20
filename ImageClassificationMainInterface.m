@@ -1,3 +1,8 @@
+%%% This is the main function that operates my Image Classification Model.
+%%% For a lazy individual, just run this model and sit back for some time. 
+%%% The model will be saved as DeployableModelWeights.mat which can be
+%%% later loaded accordingly for future deployment of the choice of the
+%%% user.
 %% Clear the Workspace beforehand
 clear
 %% Load the Data

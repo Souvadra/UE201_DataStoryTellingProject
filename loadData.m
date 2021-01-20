@@ -1,10 +1,8 @@
 function [dataArray_matrix, labels_vector, labelNames] = loadData()
-%{
-This function should be in the same directory where the CIFAR data files
-are. This function basically loads all the data and make a combined array
-for the image-data, their labels, and the names of the labels. This also
-normalises the whole data matrix.
-%}
+%%% This function should be in the same directory where the CIFAR data files
+%%% are. This function basically loads all the data and make a combined array
+%%% for the image-data, their labels, and the names of the labels. This also
+%%% normalises the whole data matrix.
 dataArray_matrix = [];
 labels_vector = [];
 labelNames = [];

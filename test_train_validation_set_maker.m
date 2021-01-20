@@ -1,8 +1,12 @@
 function [test_Matrix, train_Matrix, valid_Matrix, test_label_vector, train_label_vector, valid_label_vector] = test_train_validation_set_maker(dataArray_matrix, labels_vector, train_frequency, test_frequency)
-%{
-This code is will generated the testing, training and validation set from
-the data from the total input data.
-%}
+%%% This code is will generated the testing, training and validation set from
+%%% the data from the total input data. This function is particularly slow
+%%% and I am sure there are better and faster ways to eliminate the use of
+%%% the for loop and just vectorize the whole process. But, due to lack of
+%%% time, I am keeping it in this way for the time being.
+%%% ***********************************************************************
+%%% NOTE TO SELF: VECTORIZE THE PROCESS 
+%%% ***********************************************************************
     num_data = size(dataArray_matrix,1);
     data_width = size(dataArray_matrix,2);
     num_train = uint32(train_frequency * num_data);

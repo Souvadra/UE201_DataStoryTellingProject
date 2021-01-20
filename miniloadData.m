@@ -1,10 +1,9 @@
 function [dataArray_matrix, labels_vector, labelNames] = miniloadData()
-%{
-This function should be in the same directory where the CIFAR data files
-are. This function basically loads all the data and make a combined array
-for the image-data, their labels, and the names of the labels. This also
-normalises the whole data matrix.
-%}
+%%% This is a little brother of the loadData.m function and works on only a
+%%% single batch of the data, rather than the whole dataset. This is useful
+%%% to work with while doing some experiment, as this significantly reduce
+%%% the RAM usage, which I found myself bottleneching many times while
+%%% building my model.
 dataArray_matrix = [];
 labels_vector = [];
 labelNames = [];
