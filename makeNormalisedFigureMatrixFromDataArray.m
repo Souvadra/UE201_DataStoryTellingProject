@@ -5,26 +5,29 @@ function AnswerMatrix = makeNormalisedFigureMatrixFromDataArray(data_array)
  'image' function can be applied on it directly for check the image.
 %}
 %%
-red_array = data_array(1:1024);
-green_array = data_array(1025:2048);
-blue_array = data_array(2049:3072);
+channel_length = max(size(data_array)) / 3;
+image_dim = sqrt(channel_length);
 
-red_matrix = zeros(32,32);
-for row=(1:32)
-    red_matrix(row,:) = red_array(((row-1)*32)+1:((row-1)*32)+32);
+red_array = data_array(1:channel_length);
+green_array = data_array(channel_length+1:2*channel_length);
+blue_array = data_array(2*channel_length + 1:3 * channel_length);
+
+red_matrix = zeros(image_dim,image_dim);
+for row=(1:image_dim)
+    red_matrix(row,:) = red_array(((row-1)*image_dim)+1:((row-1)*image_dim)+image_dim);
 end
 
-green_matrix = zeros(32,32);
-for row=(1:32)
-    green_matrix(row,:) = green_array(((row-1)*32)+1:((row-1)*32)+32);
+green_matrix = zeros(image_dim,image_dim);
+for row=(1:image_dim)
+    green_matrix(row,:) = green_array(((row-1)*image_dim)+1:((row-1)*image_dim)+image_dim);
 end
 
-blue_matrix = zeros(32,32);
-for row=(1:32)
-    blue_matrix(row,:) = blue_array(((row-1)*32)+1:((row-1)*32)+32);
+blue_matrix = zeros(image_dim,image_dim);
+for row=(1:image_dim)
+    blue_matrix(row,:) = blue_array(((row-1)*image_dim)+1:((row-1)*image_dim)+image_dim);
 end
 
-AnswerMatrix = zeros(32,32,3);
+AnswerMatrix = zeros(image_dim,image_dim,3);
 AnswerMatrix(:,:,1) = red_matrix;
 AnswerMatrix(:,:,2) = green_matrix;
 AnswerMatrix(:,:,3) = blue_matrix;
